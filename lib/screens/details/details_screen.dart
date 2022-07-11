@@ -1,7 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:meditation_app/Widgets/custom_nav_bar.dart';
 import 'package:meditation_app/Widgets/search_bar.dart';
 import 'package:meditation_app/constants.dart';
+
+import '../../Widgets/meditation_card.dart';
+import '../../Widgets/session_card.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
@@ -26,68 +31,66 @@ class DetailScreen extends StatelessWidget {
           SafeArea(
               child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: size.height * 0.05,
-                ),
-                Text('Meditation',
-                    style: Theme.of(context)
-                        .textTheme
-                        .displaySmall
-                        ?.copyWith(fontWeight: FontWeight.w900)),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  '3-10 Mins Course',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  width: size.width * 0.5,
-                  child: Text(
-                      'Live happier and healthier by learning the fundamentals of meditation and mindfulness'),
-                ),
-                SizedBox(
-                  width: size.width * 0.6,
-                    child: SearchBar(),),
-                Wrap(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13),
-                        color: Colors.white,
-                          boxShadow: [BoxShadow(
-                            offset: Offset(0, 17),
-                            blurRadius: 23,
-                            spreadRadius: -13,
-                            color: kShadowColor
-                          )
-                          ]
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: size.height * 0.05,
+                  ),
+                  Text('Meditation',
+                      style: Theme.of(context)
+                          .textTheme
+                          .displaySmall
+                          ?.copyWith(fontWeight: FontWeight.w900)),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    '3-10 Mins Course',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    width: size.width * 0.5,
+                    child: Text(
+                        'Live happier and healthier by learning the fundamentals of meditation and mindfulness'),
+                  ),
+                  SizedBox(
+                    width: size.width * 0.6,
+                    child: SearchBar(),
+                  ),
+                  Wrap(
+                    spacing: 20,
+                    runSpacing: 20,
+                    children: [
+                      SessionCard(
+                        sessionNum: 01,
+                        isDone: true,
+                        press: () {},
                       ),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 42,
-                            width: 43,
-                            decoration: BoxDecoration(
-                              color: kBlueColor,
-                              shape: BoxShape.circle
-                            ),
-                            child: Icon(Icons.play_arrow,
-                            color: Colors.white,),
-                          )
-                        ],
+                      SessionCard(sessionNum: 02, isDone: true, press: () {}),
+                      SessionCard(sessionNum: 03, isDone: true, press: () {}),
+                      SessionCard(sessionNum: 04, isDone: true, press: () {}),
+                      SessionCard(sessionNum: 05, isDone: true, press: () {}),
+                      SessionCard(sessionNum: 06, isDone: true, press: () {}),
+                      SizedBox(
+                        height: 20,
                       ),
-                    )
-                  ],
-                )
-              ],
+                      Text(
+                        'Meditation',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      MeditationCard()
+                    ],
+                  )
+                ],
+              ),
             ),
           ))
         ],
@@ -95,3 +98,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
